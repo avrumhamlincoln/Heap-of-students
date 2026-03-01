@@ -20,6 +20,7 @@ classDiagram
     }
 
     class Student {
+        -studentString string
         -firstName string
         -lastName string
         -Address homeAddress
@@ -29,6 +30,9 @@ classDiagram
         +Student()
         +init(fName, lName, street, city, state, zip, birthDate, gradDate, credits) string
         +printStudent() void
+        +getFirstName() string
+        +getLastName() string
+        +getCreditHours int
     }
 
     Student --> Address
@@ -104,4 +108,18 @@ print(homeAddress)
 print(birthDate)
 print(gradDate)
 print(creditHours)
+```
+#Student.getFirstName() string
+```
+return firstName(student)
+```
+
+#Student.getLastName() string
+```
+retrun lastName(student)
+```
+
+#Student.getCreditHours() int
+```
+return creditHours(student)
 ```

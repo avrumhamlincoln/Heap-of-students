@@ -6,17 +6,22 @@
 #define STUDENT_H_EXISTS
 
 class Student{
-	private:
+	protected:
 		std::string firstName;
 		std::string lastName;
-		Address homeAddress;
-		Date birthDate;
-		Date gradDate;
+		Address* homeAddress;
+		Date* birthDate;
+		Date* gradDate;
 		int credits;
 	public:
 		Student();
-		void init(std::string fName, std::string lName, std::string street, std::string city, std::string state, std::string zip, std::string bDate, std::string gDate, int credits);
+		~Student();
+		void init(std::string studentString);
 		void printStudent();
+		std::string getLastFirst();
+		std::string getLastName();
+		std::string getFirstName();
+		int getCreditHours();
 };
 
 #endif
