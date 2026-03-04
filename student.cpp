@@ -7,14 +7,14 @@
 Student::Student(){
 	firstName = "";
 	lastName = "";
-	address = new Address();
+	Address = new Address();
 	birthDate = new Date();
 	gradDate = new Date();
 	creditHours = 0;
 }
 
 Student::~Student(){
-	delete address;
+	delete Address;
 	delete birthDate;
 	delete gradDate;
 }
@@ -39,10 +39,14 @@ void Student::init(std::string studentString){
 	getline(converter, state, ',');
 	getline(converter, zip, ',');
 
-	address->init(street, city, state, zip);
+	Address->init(street, city, state, zip);
 
 	getline(converter, sBirthDate, ',');
 	getline(converter, sGradDate, ',');
+
+	birthDate->init(sBirthDate);
+	gradDate->init(sGradDate);
+
 	getline(converter, sCreditHours, ',');
 
 	converter.clear();
@@ -51,4 +55,32 @@ void Student::init(std::string studentString){
 	converter >> creditHours;
 }
 
+void Student::printStudent(){
+	std::cout << lastName << ", " << firstName << std::endl;
+	address->printAddress();
+	std::cout << "Birth Date: ";
+	birthDate->printDate();
+	std::cout << "Grad Date: ";
+	gradDate->printDate();
+	std::cout << "Credit Hours: " << creditHours << std::endl;
+}
+
+std::string Student::getLastFirst(){
+	std::stringstream converter;
+	converter.str("");
+	converter << lastName << ", " <<firstName;
+	return converter.str();
+}
+
+std::string Student::getFirstName(){
+	return firstName;
+}
+
+std::string Student::getLastName(){
+	return lastName;
+}
+
+int Student::getCreditHours(){
+	return creditHours;
+}
 
