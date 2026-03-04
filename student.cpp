@@ -7,14 +7,14 @@
 Student::Student(){
 	firstName = "";
 	lastName = "";
-	Address = new Address();
+	homeAddress = new Address();
 	birthDate = new Date();
 	gradDate = new Date();
 	creditHours = 0;
 }
 
 Student::~Student(){
-	delete Address;
+	delete homeAddress;
 	delete birthDate;
 	delete gradDate;
 }
@@ -39,7 +39,7 @@ void Student::init(std::string studentString){
 	getline(converter, state, ',');
 	getline(converter, zip, ',');
 
-	Address->init(street, city, state, zip);
+	homeAddress->init(street, city, state, zip);
 
 	getline(converter, sBirthDate, ',');
 	getline(converter, sGradDate, ',');
@@ -57,7 +57,7 @@ void Student::init(std::string studentString){
 
 void Student::printStudent(){
 	std::cout << lastName << ", " << firstName << std::endl;
-	address->printAddress();
+	homeAddress->printAddress();
 	std::cout << "Birth Date: ";
 	birthDate->printDate();
 	std::cout << "Grad Date: ";

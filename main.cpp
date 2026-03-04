@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <fstream>
 #include "date.h"
 #include "address.h"
 #include "student.h"
@@ -7,13 +9,57 @@ void testAddress();
 void testDate();
 void testStudent();
 
+void loadStudents(std::vector<Student*>&);
+void printStudents(std::vector<Student*>&);
+void showStudentNames(std::vector<Student*>&);
+void findStudent(std::vector<Student*>&);
+void delStudents(std::vector<Student*>&);
+std::string menu();
+
 int main(){
+
+/*
   std::cout << "Hello!" << std::endl;
  testAddress();
  testDate();
- //testStudent();
+ testStudent();
+*/
+
+  std::vector<Student*> students;
+  loadStudents(students);
+  showStudentNames(students);
+  delStudents(students);
+
   return 0;
-} // end main
+}// end main
+
+void delStudents(std::vector<Student*>& students){
+	for (Student* student: students){
+		delete student;
+	}
+}
+
+void showStudentNames(std::vector<Student*>& students){
+	for (Student* student: students){
+		std::cout << student->getLastFirst() << std::endl;
+	}
+}
+
+
+void loadStudents(std::vector<Student*>& students){  
+  std::ifstream inFile;
+  std::string currentLine;
+
+  inFile.open("students.csv");
+  while(getline(inFile, currentLine)){
+   // std::cout << currentLine << std::endl;
+    Student* s = new Student();
+    s->init(currentLine);
+    students.push_back(s);
+  }
+
+  inFile.close();
+} // end loadStudents
 
 void testAddress(){
   Address a;

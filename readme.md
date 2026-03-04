@@ -123,3 +123,70 @@ retrun lastName(student)
 ```
 return creditHours(student)
 ```
+
+#loading the students
+```
+make a file input stream
+make a string for the curent line
+
+open file streamwith the students. csv
+read each line into currentLine
+create a new instance of Studen for the student we are loading in
+push that student to the back of the vector
+close file
+```
+
+#printing the students
+```
+for i in vector:
+    print Student
+```
+
+#show name
+```
+for i in vector:
+    print Student(last, first)
+```
+
+#find student
+```
+create a string for the name
+create a bool for found/not
+
+for all students:
+    if name is found:
+        return name
+    else:
+        return that name does not exist
+```
+
+#menu
+```
+print menu options
+do what each option says
+```
+
+#delete student
+```
+for i in vector:
+    delete i
+```
+
+#main
+```
+make a students vector [""]
+load student witht the loader
+
+while keepGoing is true:
+    call menue
+        if 0:
+            keepGoing = false
+        if 1:
+            call showNames
+        if 2:
+            call printStudents
+        if 3:
+            call findStudent
+
+delete all students from heap
+```
