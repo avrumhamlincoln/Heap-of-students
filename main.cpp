@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 #include "date.h"
 #include "address.h"
 #include "student.h"
@@ -18,20 +19,54 @@ std::string menu();
 
 int main(){
 
-/*
-  std::cout << "Hello!" << std::endl;
- testAddress();
- testDate();
- testStudent();
-*/
+  bool keepGoing = true;
+
+  while (keepGoing){
+  
+  }
 
   std::vector<Student*> students;
   loadStudents(students);
-  showStudentNames(students);
+  printStudents(students); 
+  //showStudentNames(students);
+  //findStudent(students);
   delStudents(students);
 
   return 0;
 }// end main
+
+void printStudents(std::vector<Student*>& students){
+	for (Student* student: students){
+		std::cout << "-------------------------" << std::endl;
+	       	student->printStudent();
+	}
+}
+
+void findStudent(std::vector<Student*>& students){
+	std::string name;
+    	bool found = false;
+
+	std::cout << "Enter the last name of the student to find: ";
+    	std::cin >> name;
+
+	for (Student* s : students){
+        	bool isMatch = false;
+
+       		if (s->getLastName() == name){
+        		isMatch = true;
+		}
+		
+		if (isMatch){
+            		std::cout << "Student Found!" << std::endl;
+            		s->printStudent();
+            		found = true;
+		}
+	}
+
+	if (!found){
+		std::cout << "That name does not exist." << std::endl;
+	}
+}
 
 void delStudents(std::vector<Student*>& students){
 	for (Student* student: students){
