@@ -18,22 +18,45 @@ void delStudents(std::vector<Student*>&);
 std::string menu();
 
 int main(){
+	std::vector<Student*> students;
+	loadStudents(students);
 
-  bool keepGoing = true;
+	bool keepGoing = true;
 
-  while (keepGoing){
-  
-  }
+	while (keepGoing) {
+		std::string choice = menu();
+        	if (choice == "0") {
+            		keepGoing = false;
+            		std::cout << "Exiting program..." << std::endl;
+        	} 
+		else if (choice == "1") {
+            		showStudentNames(students);
+        	} 
+		else if (choice == "2") {
+           		printStudents(students);
+        	} 
+		else if (choice == "3") {
+            		findStudent(students);
+       		 }
+	}
 
-  std::vector<Student*> students;
-  loadStudents(students);
-  printStudents(students); 
-  //showStudentNames(students);
-  //findStudent(students);
   delStudents(students);
 
   return 0;
 }// end main
+
+std::string menu() {
+    std::string choice;
+    std::cout << std::endl;
+    std::cout << "MENU" << std::endl;
+    std::cout << "1. Show Student Names" << std::endl;
+    std::cout << "2. Print Student" << std::endl;
+    std::cout << "3. Find Student" << std::endl;
+    std::cout << "0. Exit" << std::endl;
+    std::cout << "Enter choice: ";
+    std::cin >> choice;
+    return choice;
+}
 
 void printStudents(std::vector<Student*>& students){
 	for (Student* student: students){
