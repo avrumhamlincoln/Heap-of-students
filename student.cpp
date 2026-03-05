@@ -56,6 +56,7 @@ void Student::init(std::string studentString){
 }
 
 void Student::printStudent(){
+	std::cout << "-------------------------" << std::endl;
 	std::cout << lastName << ", " << firstName << std::endl;
 	homeAddress->printAddress();
 	std::cout << "Birth Date: ";
